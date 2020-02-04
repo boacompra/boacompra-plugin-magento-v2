@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<payment>
+            <boacompra_hosted>
+                <active>1</active>
+                <title>BoaCompra</title>
+                <model>Uol\BoaCompra\Model\Payment\Hosted</model>
+                <payment_action>authorize</payment_action>
+            </boacompra_hosted>
+            <boacompra_creditcard>
+                <active>1</active>
+                <title>Credit Card</title>
+                <model>Uol\BoaCompra\Model\Payment\CreditCard</model>
+                <payment_action>authorize</payment_action>
+            </boacompra_creditcard>
+            <boacompra_postpay>
+                <active>1</active>
+                <title>PostPay</title>
+                <model>Uol\BoaCompra\Model\Payment\PostPay</model>
+                <payment_action>authorize</payment_action>
+            </boacompra_postpay>
+            <boacompra_ewallet>
+                <active>1</active>
+                <title>e-Wallet</title>
+                <model>Uol\BoaCompra\Model\Payment\EWallet</model>
+                <payment_action>authorize</payment_action>
+            </boacompra_ewallet>
+		</payment>
+	</default>
+</config>

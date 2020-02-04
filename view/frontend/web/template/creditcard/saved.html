@@ -1,0 +1,24 @@
+<div class="boacompra-saved-cc">
+    <p><img data-bind="attr: {src: getIcon(CcSaved.type()).url}"></p>
+    <p><!-- ko i18n: 'Credit Card Number'--><!-- /ko -->: **** **** **** <span data-bind="text: CcSaved.number()"></span></p>
+    <p><!-- ko i18n: 'Expiration Date'--><!-- /ko -->: <span data-bind="text: CcSaved.exp_month()"></span>/<span data-bind="text: CcSaved.exp_year()"></span></p>
+
+    <div class="field installments required boacompra-cc-installments" data-bind="attr: {id: getCode() + '_saved_cc_installments_div'}">
+        <label data-bind="attr: {for: getCode() + '_saved_cc_installments'}" class="label">
+            <span><!-- ko i18n: 'Installments'--><!-- /ko --></span>
+        </label>
+        <div class="control">
+            <select  name="payment[saved_cc_installments]"
+                     class="select select-installments"
+                     data-bind="attr: {id: getCode() + '_saved_cc_installments',
+                                     'data-container': getCode() + '-saved-cc-installments',
+                                     'data-validate': JSON.stringify({required:true})},
+                                                    options: CcSaved.installments(),
+                                                    optionsValue: 'quantity',
+                                                    optionsText: 'label',
+                                                    value: creditCardInstallments">
+            </select>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,10 @@
+<?php if ($block->isPostPay()): ?>
+    <br/>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary" href="<?php echo $block->getPaymentUrl() ?>" target="_blank"><span><?= /* @escapeNotVerified */ __('Print PostPay') ?></span></a>
+        </div>
+    </div>
+    <br>
+    <p><?php echo $block->getDigitableLine() ?></p>
+<?php endif; ?>

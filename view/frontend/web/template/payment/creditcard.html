@@ -1,0 +1,59 @@
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label data-bind="attr: {'for': getCode()}" class="label"><span data-bind="text: getTitle()"></span></label>
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+
+        <!-- ko if: CcSaved.code() -->
+        <div class="payment-method-title field choice">
+            <input type="radio" name="payment[use_saved_cc]"
+                   class="radio"
+                   id="boacompra-use-saved-cc"
+                   data-bind="checked: useSavedCc, value: true">
+            <label for="boacompra-use-saved-cc" class="label"><span><!-- ko i18n: 'Use Saved Credit Card'--><!-- /ko --></span></label>
+        </div>
+
+        <!-- ko if: useSavedCc() -->
+        <render args="containerSavedCc"></render>
+        <!-- /ko -->
+
+        <div class="payment-method-title field choice">
+            <input type="radio" name="payment[use_saved_cc]"
+                   class="radio"
+                   id="boacompra-use-new-cc"
+                   data-bind="checked: useSavedCc, value: false">
+            <label for="boacompra-use-new-cc" class="label"><span><!-- ko i18n: 'Use New Credit Card'--><!-- /ko --></span></label>
+        </div>
+        <!-- /ko -->
+
+        <!-- ko if: !CcSaved.code() || !useSavedCc() -->
+        <render args="containerFormCc"></render>
+        <!-- /ko -->
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: placeOrder,
+                        attr: {title: $t('Place Order')}"
+                        >
+                    <span data-bind="i18n: 'Place Order'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+        

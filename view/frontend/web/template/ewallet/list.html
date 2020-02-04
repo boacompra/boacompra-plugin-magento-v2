@@ -1,0 +1,7 @@
+<div class="field type" data-bind="attr: {id: getCode() + '_subtype'}">
+    <div class="control">
+        <!-- ko foreach: { data: getSubtypes(), as: 'item'} -->
+        <!--ko template: { name: $parent.subtypeItemTemplate} --><!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>

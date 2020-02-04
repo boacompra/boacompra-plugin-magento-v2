@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="payment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1000" translate="label">
+			<group id="boacompra" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>BoaCompra</label>
+				<field id="active" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="environment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="select">
+					<label>Environment</label>
+					<source_model>Uol\BoaCompra\Model\Config\Source\Environment</source_model>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+				</field>
+				<field id="merchant_id" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="text">
+					<label>Merchant ID</label>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+				</field>
+				<field id="secret_key" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="35" translate="label" type="obscure">
+					<label>Secret Key</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+				</field>
+				<field id="checkout_type" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="select">
+					<label>Checkout Type</label>
+					<source_model>Uol\BoaCompra\Model\Config\Source\CheckoutType</source_model>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+				</field>
+				<field id="payment_type" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label" type="multiselect">
+					<label>Payment Types</label>
+					<source_model>Uol\BoaCompra\Model\Config\Source\PaymentType</source_model>
+					<comment>This payment method is available Brazil only</comment>
+					<depends>
+						<field id="active">1</field>
+						<field id="checkout_type">direct_checkout</field>
+					</depends>
+				</field>
+				<field id="allow_tokenization" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="60" translate="label" type="select">
+					<label>Allow Tokenization</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="active">1</field>
+						<field id="checkout_type">direct_checkout</field>
+						<field id="payment_type">boacompra_creditcard</field>
+					</depends>
+				</field>
+				<field id="log" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="select">
+					<label>Log Transactions</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

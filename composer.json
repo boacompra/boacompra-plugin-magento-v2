@@ -1,0 +1,23 @@
+{
+    "name": "uol/module-boacompra",
+    "description": "",
+    "version": "1.0.1",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Trezo",
+            "email": "contato@trezo.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Uol\\BoaCompra\\": ""
+        }
+    }
+}

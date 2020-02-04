@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="payment_method_assign_data">
+        <observer name="uol_boacompra_data_assign" instance="Uol\BoaCompra\Observer\DataAssignObserver" />
+    </event>
+    <event name="uol_boacompra_authorize_after">
+        <observer name="uol_boacompra_save_creditcard_token" instance="Uol\BoaCompra\Observer\SaveCreditCardToken" />
+    </event>
+    <event name="uol_boacompra_transaction_invoice_after">
+        <observer name="uol_boacompra_enable_creditcard_token" instance="Uol\BoaCompra\Observer\EnableCreditCardToken" />
+    </event>
+</config>
