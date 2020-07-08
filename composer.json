@@ -10,7 +10,9 @@
             "email": "contato@trezo.com.br"
         }
     ],
+   
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {},
     "autoload": {
         "files": [
